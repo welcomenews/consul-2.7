@@ -10,7 +10,7 @@
     - ansible-consul
 
 
-- name: Consul client-2 and service
+- name: Consul client-1 and service
   hosts: 192.168.1.91
   any_errors_fatal: true
   become: true
@@ -20,7 +20,7 @@
   roles:
     - ansible-consul
 
-#- name: Consul client-1 and service
+#- name: Consul client-2 and service
 #  hosts: 192.168.1.93
 #  any_errors_fatal: true
 #  become: true
@@ -31,13 +31,13 @@
 #    - ansible-consul      
       
 
-#- name: Install Nginx
-#  hosts: 192.168.1.91
-#  gather_facts: yes
-#  any_errors_fatal: true
-#  become: true
-#  become_user: root
-#  vars:
-#    ansible_python_interpreter: /usr/bin/python3
-#  roles:
-#    - ansible-role-nginx
+- name: Install Nginx
+  hosts: 192.168.1.91
+  gather_facts: yes
+  any_errors_fatal: true
+  become: true
+  become_user: root
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  roles:
+    - ansible-role-nginx
