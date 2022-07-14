@@ -1,0 +1,20 @@
+---
+- name: restart consul on unix
+  service:
+    name: consul
+    state: restarted
+  when:
+    - ansible_os_family != "Darwin"
+    - ansible_os_family != "Windows"
+  listen: 'restart consul'
+
+- name: restart consul on windows
+  win_service:
+    name: consul
+    state: restarted
+  when: ansible_os_family == "Windows"
+  register: windows_service_started
+  retries: 3
+  delay: 1
+  until: windows_service_started is succeeded
+  listen: 'restart consul'
