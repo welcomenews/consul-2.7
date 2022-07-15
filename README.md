@@ -5,12 +5,15 @@
 sudo apt-get install build-essential devscripts
 sudo apt install --only-upgrade systemd
 
-```
-#### Смотреть инфу по кластеру
+
+## Смотреть инфу по кластеру
 consul info
 
-#### Смотреть зарегистрированные сервисы
+## Смотреть зарегистрированные сервисы
 consul catalog services
 
-#### Добавить ноду в кластер
+## Добавить ноду в кластер
 consul join IP
+
+```
+
