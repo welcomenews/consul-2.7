@@ -1,0 +1,21 @@
+{% if backend is defined %}
+upstream {{ backend }} {
+  server 127.0.0.1:8080;
+}
+{% else %}
+upstream python {
+{{'{{'}}- range service "{{ servicename }}" {{'}}'}}
+  server {{'{{'}} .Address {{'}}'}};
+{{'{{'}}- end {{'}}'}}
+}
+{% endif %}
+server {
+  listen 80;
+  location / {
+{% if backend is defined %}
+    proxy_pass http://{{ backend }};
+{% else %}
+    proxy_pass http://python;
+{% endif %}
+  }
+}
