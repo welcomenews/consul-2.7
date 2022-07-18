@@ -4,9 +4,9 @@ upstream {{ backend }} {
 }
 {% else %}
 upstream python {
-{{'{{'}}- range service "{{ servicename }}" {{'}}'}}
-  server {{'{{'}} .Address {{'}}'}};
-{{'{{'}}- end {{'}}'}}
+{% for address in Address %}
+  server {{ address }};
+{% endfor %}
 }
 {% endif %}
 server {
