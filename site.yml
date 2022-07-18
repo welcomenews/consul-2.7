@@ -41,3 +41,12 @@
     ansible_python_interpreter: /usr/bin/python3
   roles:
     - ansible-role-nginx
+
+- name: Install Consul Template
+  hosts: 192.168.1.94
+  any_errors_fatal: true
+  become: true
+  become_user: root
+  roles:
+    - ansible-consul-template
+

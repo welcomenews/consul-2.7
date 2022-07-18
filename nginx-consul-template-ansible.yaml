@@ -1,0 +1,32 @@
+---
+- name: Configuration Nginx
+  hosts: 192.168.1.91
+  become: true
+  gather_facts: yes
+  become_user: root
+  tasks:
+    - name: Getting backend name from consul KV storage
+      delegate_to: 127.0.0.1
+      ignore_errors: yes
+      set_fact:
+        backend: "{{ lookup('consul_kv', 'backend', host='192.168.1.91') }}"
+      when: backend | length > 0
+    - name: Configure Nginx for consul-template
+      include_role:
+        name: ansible-role-nginx-config
+      vars:
+        servicename: backend
+        nginx_config_stream_template_enable: true
+        nginx_config_stream_template:
+          - template_file: stream/load-balancer.conf.ctmpl.j2
+            conf_file_name: load-balancer.conf.ctmpl
+            conf_file_location: /etc/nginx/conf.d
+        nginx_config_cleanup: true
+        nginx_config_cleanup_paths:
+          - directory:
+              - /etc/nginx/conf.d
+              - /etc/nginx/sites-enabled
+            recurse: false
+        nginx_config_cleanup_files:
+          - /etc/nginx/conf.d/default.conf
+          - /etc/nginx/sites-enabled/000-default

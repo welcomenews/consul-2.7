@@ -1,0 +1,14 @@
+---
+- name: Create a directory
+  ansible.builtin.file:
+    path: /etc/consul-template.d
+    state: directory
+    mode: '0755'
+
+- name: Copy files
+  copy:
+    src: consul-template-config.json
+    dest: /etc/consul-template.d/
+    owner: root
+    mode: 0644
+
