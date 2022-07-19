@@ -44,6 +44,9 @@ consul catalog services
 ## Добавить ноду в кластер
 consul join IP
 
+## Смотреть что есть в consul по ключу version
+consul kv get version
+
 ## Смотреть информацио по ноде 
 dig @127.0.0.1 -p8600 имя_ноды.node.consul
 
