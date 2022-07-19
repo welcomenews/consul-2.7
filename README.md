@@ -30,10 +30,21 @@ Location в Nginx также использует значение ключа ve
 
 
 ```
+## Копируем ssh-ключ на сервера
+ssh-copy-id sergey@192.168.1.90
+...
+
 ## Перед установкой нужно обновить systemd
 sudo apt-get install build-essential devscripts
 sudo apt install --only-upgrade systemd
 
+ansible-playbook -K -i consul.inv site.yml
+
+## Меняем версию ключа
+consul kv put version v1
+
+## После внесения изменения version в consul запускаем ...
+ansible-playbook -K -i consul.inv nginx-consul-template-ansible.yaml
 
 ## Смотреть инфу по кластеру
 consul info
