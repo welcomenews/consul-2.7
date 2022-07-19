@@ -21,6 +21,13 @@
 6. Переменную version необходимо искать в KV-хранилище. По умолчанию значение переменной должно быть v2.
 Location в Nginx также использует значение ключа version из KV и перенаправляет запросы в соответствующий upstream. Например, location /v2/.
 
+#### Советы и рекомендации
+Для поиска в KV store в Ansible должен быть пакет python-consul. Установите его на машину Ansible перед запуском.
+Попробуйте добавить ключ version в consul KV разные значения:
+# consul kv put version v1,
+# consul kv put version v2,
+# consul kv put version abc.
+
 
 ```
 ## Перед установкой нужно обновить systemd
