@@ -24,9 +24,9 @@ Location в Nginx также использует значение ключа ve
 #### Советы и рекомендации
 Для поиска в KV store в Ansible должен быть пакет python-consul. Установите его на машину Ansible перед запуском.
 Попробуйте добавить ключ version в consul KV разные значения:
-# consul kv put version v1,
-# consul kv put version v2,
-# consul kv put version abc.
+- consul kv put version v1,
+- consul kv put version v2,
+- consul kv put version abc.
 
 
 ```
