@@ -30,6 +30,10 @@ Location в Nginx также использует значение ключа ve
 
 
 ```
+## Копируем ssh-ключ на сервера
+ssh-copy-id sergey@192.168.1.90
+...
+
 ## Перед установкой нужно обновить systemd
 sudo apt-get install build-essential devscripts
 sudo apt install --only-upgrade systemd
