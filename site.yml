@@ -32,7 +32,7 @@
       
 
 - name: Install Nginx
-  hosts: 192.168.1.91
+  hosts: nginx_instances
   gather_facts: yes
   any_errors_fatal: true
   become: true
