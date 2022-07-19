@@ -21,6 +21,11 @@ dig @127.0.0.1 -p8600 имя_ноды.node.consul
 ## Смотреть информацио по сервису 
 dig @127.0.0.1 -p8600 имя_сервиса.service.consul
 
+## Смотреть агентов
+curl -v http://localhost:8500/v1/agent/members | python3 -m json.tool
 
 ```
 
+https://russianblogs.com/article/8931547619/
+
+https://github.com/hashicorp/consul-template
