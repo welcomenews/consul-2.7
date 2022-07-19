@@ -6,16 +6,16 @@
   become_user: root
   tasks:
     - name: Getting backend name from consul KV storage
-      delegate_to: 127.0.0.1
-      ignore_errors: yes
       set_fact:
-        backend: "{{ lookup('consul_kv', 'backend', host='192.168.1.91') }}"
-      when: backend | length > 0
+        version: "{{ lookup('consul_kv', 'version', host='192.168.1.91') | default('v2', true)  }}"
+#      when: version | length > 0
+    - name: Print Key version
+      debug:
+        msg: "version = {{ version }}"
     - name: Configure Nginx for consul-template
       include_role:
         name: ansible-role-nginx-config
       vars:
-        servicename: backend
         nginx_config_stream_template_enable: true
         nginx_config_stream_template:
           - template_file: stream/load-balancer.conf.ctmpl.j2

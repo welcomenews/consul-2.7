@@ -24,4 +24,5 @@ nginx_config_cleanup_files:
 # nginx_config_modules:
 #   - modules/ngx_http_js_module.so
 #
-Address: ['192.168.1.91']
+Address_v1: ['192.168.1.91']
+Address_v2: ['192.168.1.91']

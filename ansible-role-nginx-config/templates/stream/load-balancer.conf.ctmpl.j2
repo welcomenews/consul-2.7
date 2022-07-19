@@ -1,21 +1,36 @@
-{% if backend is defined %}
-upstream {{ backend }} {
-  server 127.0.0.1:8080;
-}
-{% else %}
-upstream python {
-{% for address in Address %}
+{% if version is defined %}
+ {% if version == "v1" %}
+upstream be_version_v1 {
+ {% for address in Address_v1 %}
   server {{ address }};
-{% endfor %}
+ {% endfor %}
+}
+{% elif version == "v2" %}
+upstream be_version_v2 {
+ {% for address in Address_v2 %}
+  server {{ address }};
+ {% endfor %}
 }
 {% endif %}
+{% endif %}
+
 server {
   listen 80;
-  location / {
-{% if backend is defined %}
-    proxy_pass http://{{ backend }};
-{% else %}
-    proxy_pass http://python;
-{% endif %}
+
+{% if version is defined %}
+ {% if version == "v1" %}
+  location /v1/ {
+    proxy_pass http://be_version_v1;
   }
+ {% elif version == "v2" %}
+  location /v2/ {
+    proxy_pass http://be_version_v2;
+  }
+
+{% else %}
+  location / {
+    proxy_pass http://{{ Address_v1[0] }};
+  }
+{% endif %}
+{% endif %}
 }

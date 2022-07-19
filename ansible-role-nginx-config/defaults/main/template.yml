@@ -84,7 +84,7 @@ nginx_config_http_template:
     backup: true
     config:
       upstreams:  # Configure upstreams
-        - name: backend  # Required
+        - name: version  # Required
           servers:  # Cannot be used if 'state' directive is defined
             - address: localhost  # Required -- You can use an IP address, a Unix socket, or a domain -- include port details inline if necessary
               weight: 1  # Number
@@ -373,7 +373,7 @@ nginx_config_http_template:
         cache_methods: GET  # String or a list of strings
         cache_min_uses: 1  # Number
         cache_path:  # Available only in the 'http' context
-          - path: /var/cache/nginx/proxy/backend  # Required
+          - path: /var/cache/nginx/proxy/version ##Required
             levels: "1:1"
             use_temp_path: false  # Boolean
             keys_zone:  # Required
@@ -699,7 +699,7 @@ nginx_config_http_template:
         - core:
           ssl:
           locations:
-            - location: /backend
+            - location: /version
               core:
 
 # Enable NGINX 'stub_status' data.

@@ -3,12 +3,15 @@
   ansible.builtin.file:
     path: /etc/consul-template.d
     state: directory
+    owner: consul
+    group: consul
     mode: '0755'
 
 - name: Copy files
   copy:
     src: consul-template-config.json
     dest: /etc/consul-template.d/
-    owner: root
+    owner: consul
+    group: consul 
     mode: 0644
 

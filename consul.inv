@@ -4,7 +4,7 @@
 192.168.1.92 consul_bind_address=192.168.1.92 consul_client_address="192.168.1.92 127.0.0.1" consul_node_role=server consul_bootstrap_expect=true
 192.168.1.91 consul_bind_address=192.168.1.91 consul_client_address="192.168.1.91 127.0.0.1" consul_node_role=client consul_enable_local_script_checks=true
 #192.168.1.93 consul_bind_address=192.168.1.93 consul_client_address="192.168.1.93 127.0.0.1" consul_node_role=client consul_enable_local_script_checks=true
-#192.168.1.94 consul_bind_address=192.168.1.94 consul_client_address="192.168.1.94 127.0.0.1" consul_node_role=client
+#192.168.1.94 consul_bind_address=192.168.1.94 consul_client_address="192.168.1.94 127.0.0.1" consul_node_role=client consul_enable_local_script_checks=false
 
 [nginx_instances]
 nginx_1 ansible_host=192.168.1.91 ansible_ssh_user=sergey ansible_ssh_private_key=~/.ssh/id_rsa
