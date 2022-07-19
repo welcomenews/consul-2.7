@@ -27,3 +27,5 @@ curl -v http://localhost:8500/v1/agent/members | python3 -m json.tool
 ```
 
 https://russianblogs.com/article/8931547619/
+
+https://github.com/hashicorp/consul-template
