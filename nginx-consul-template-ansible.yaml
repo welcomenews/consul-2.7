@@ -1,13 +1,13 @@
 ---
 - name: Configuration Nginx
-  hosts: 192.168.1.91
+  hosts: 192.168.1.94
   become: true
   gather_facts: yes
   become_user: root
   tasks:
     - name: Getting backend name from consul KV storage
       set_fact:
-        version: "{{ lookup('consul_kv', 'version', host='192.168.1.91') | default('v2', true)  }}"
+        version: "{{ lookup('consul_kv', 'version', host='192.168.1.94') | default('v2', true)  }}"
 #      when: version | length > 0
     - name: Print Key version
       debug:
